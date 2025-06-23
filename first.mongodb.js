@@ -119,7 +119,7 @@ use('konpapa')
 //   }
 // ])
 ///fix again and again
-
+/*
 db.posts.aggregate([
   {
     $group: {
@@ -134,5 +134,10 @@ db.posts.aggregate([
     //   yooCount:   { $sum: "$yooo"}
     }
   }
-]);
+]);*/
 // db.posts.find().pretty()
+
+posts = db.posts;
+
+// posts.find()
+posts.find({}, {_id:0})
