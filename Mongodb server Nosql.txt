@@ -1,6 +1,0 @@
-Mongodb server: Nosql
-
-
-password N5HZNDyalbefIihG
-
-username vathanasroeun
