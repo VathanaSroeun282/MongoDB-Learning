@@ -139,5 +139,20 @@ db.posts.aggregate([
 
 posts = db.posts;
 
-// posts.find()
-posts.find({}, {_id:0})
+// // posts.find()
+// posts.find({}, {_id:0})
+
+// posts.find();
+posts.aggregate([
+{
+  $group: {
+    _id : "$title",
+    AmountAllLike : {$sum : "$likes"},
+    Username : { $first : "$category"}
+  }
+}
+// ,
+// {
+//   $limit : 1
+// }
+]);
