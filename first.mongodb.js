@@ -143,16 +143,31 @@ posts = db.posts;
 // posts.find({}, {_id:0})
 
 // posts.find();
-posts.aggregate([
-{
-  $group: {
-    _id : "$title",
-    AmountAllLike : {$sum : "$likes"},
-    Username : { $first : "$category"}
-  }
-}
-// ,
+// posts.aggregate([
 // {
-//   $limit : 1
+//   $group: {
+//     _id : "$title",
+//     AmountAllLike : {$sum : "$likes"},
+//     Username : { $first : "$category"}
+//   }
 // }
-]);
+// // ,
+// // {
+// //   $limit : 1
+// // }
+// ]);
+
+
+db.posts.aggregate([
+  {
+    $project: {
+      "_id" : 0,
+      "title" : 1,
+      "body" : 1, 
+      "likes" : 1 
+    }
+  },
+  {
+    $limit: 2
+  }
+])
