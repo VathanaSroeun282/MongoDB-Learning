@@ -158,16 +158,35 @@ posts = db.posts;
 // ]);
 
 
-db.posts.aggregate([
+// db.posts.aggregate([
+//   {
+//     $project: {
+//       "_id" : 0,
+//       "title" : 1,
+//       "body" : 1, 
+//       "likes" : 1 
+//     }
+//   },
+//   {
+//     $limit: 2
+//   }
+// ])
+
+posts = db.posts;
+
+posts.aggregate([
   {
-    $project: {
-      "_id" : 0,
-      "title" : 1,
-      "body" : 1, 
-      "likes" : 1 
-    }
+    $sort : {"title" : 1}
   },
-  {
-    $limit: 2
+{
+  $project: {
+    "_id" : 0, 
+    "title" : 1, 
+    "body" : 1,
+    "category" : 1
   }
-])
+},
+{
+  $limit: 30
+}
+]);
